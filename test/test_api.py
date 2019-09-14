@@ -31,7 +31,7 @@ def test_stakeholders_endpoints(api_client):
     # We expect the response to contain zero stakeholders.
 
     response = api_client.get(SHOW_STAKEHOLDERS)
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -76,7 +76,7 @@ def test_stakeholders_endpoints(api_client):
     # We expect the response to contain both stakeholders.
 
     response = api_client.get(SHOW_STAKEHOLDERS)
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -103,7 +103,7 @@ def test_stakeholders_endpoints(api_client):
     # We expect the response to contain only that stakeholder.
 
     response = api_client.get("{}?id=1".format(SHOW_STAKEHOLDERS))
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -140,7 +140,7 @@ def test_stakeholders_endpoints(api_client):
     # We expect the response to include our previous updates.
 
     response = api_client.get("{}?id=1".format(SHOW_STAKEHOLDERS))
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -185,7 +185,7 @@ def test_stakeholders_endpoints(api_client):
     # We expect the response to contain zero stakeholders.
 
     response = api_client.get(SHOW_STAKEHOLDERS)
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -204,7 +204,7 @@ def test_deliverables_endpoints(api_client):
     # We expect the response to contain zero deliverables.
 
     response = api_client.get(SHOW_DELIVERABLES)
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -249,7 +249,7 @@ def test_deliverables_endpoints(api_client):
     # We expect the response to contain both deliverables.
 
     response = api_client.get(SHOW_DELIVERABLES)
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -274,7 +274,7 @@ def test_deliverables_endpoints(api_client):
     # We expect the response to contain only that deliverable.
 
     response = api_client.get("{}?id=1".format(SHOW_DELIVERABLES))
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -310,7 +310,7 @@ def test_deliverables_endpoints(api_client):
     # We expect the response to include our previous updates.
 
     response = api_client.get("{}?id=1".format(SHOW_DELIVERABLES))
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -354,7 +354,7 @@ def test_deliverables_endpoints(api_client):
     # We expect the response to contain zero deliverables.
 
     response = api_client.get(SHOW_DELIVERABLES)
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -445,7 +445,7 @@ def test_associations_endpoints(api_client):
     # We expect the response to contain zero associations.
 
     response = api_client.get(SHOW_ASSOCIATIONS)
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -484,7 +484,7 @@ def test_associations_endpoints(api_client):
     # We expect the response to contain both associations.
 
     response = api_client.get(SHOW_ASSOCIATIONS)
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -509,7 +509,7 @@ def test_associations_endpoints(api_client):
     # We expect the response to contain only that association.
 
     response = api_client.get("{}?id=1".format(SHOW_ASSOCIATIONS))
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -542,7 +542,7 @@ def test_associations_endpoints(api_client):
     # We expect the response to include our previous updates.
 
     response = api_client.get("{}?id=1".format(SHOW_ASSOCIATIONS))
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
@@ -586,7 +586,7 @@ def test_associations_endpoints(api_client):
     # We expect the response to contain zero associations.
 
     response = api_client.get(SHOW_ASSOCIATIONS)
-    data = json.loads(response.data)
+    data = json.loads(response.data.decode())
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
