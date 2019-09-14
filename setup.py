@@ -16,6 +16,7 @@ setuptools.setup(
             "templates/*.*"
         ]
     },
+    python=">=3.6",
     install_requires=[
         "flask",
         "gunicorn",
@@ -23,6 +24,7 @@ setuptools.setup(
     ],
     extras_require={
         "test": [
+            "coveralls",
             "pytest",
             "pytest-cov",
             "selenium"
