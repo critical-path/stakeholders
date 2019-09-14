@@ -47,10 +47,10 @@ To install it without test-related dependencies, run the following command from 
 Starting stakeholders
 =====================
 
-With Docker
------------
+With Docker (preferred)
+-----------------------
 
-To start stakeholders with Docker (the first time), run the following command from your shell.
+To start stakeholders with Docker the first time, run the following command from your shell.
 
 .. code-block:: console
 
