@@ -10,7 +10,7 @@ To start stakeholders with Docker the first time, run the following command from
 
    [user@host stakeholders]$ docker-compose up --build
 
-After the first time, run the following commnd from your shell.  (This will restart the container rather than build it from scratch, preserving your progress.)
+After the first time, run the following command from your shell.  (This will restart the container rather than build it from scratch, preserving your progress.)
 
 .. code-block:: console
 
