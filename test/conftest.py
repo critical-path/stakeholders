@@ -98,7 +98,7 @@ def api_client(api):
             super().__init__(*args, **kwargs)
 
         def json(self):
-            data = self.get_data()
+            data = self.get_data().decode()
             return json.loads(data)
 
     return flask.testing.FlaskClient(api, JSONResponse)
