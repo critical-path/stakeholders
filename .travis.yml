@@ -1,0 +1,26 @@
+# repo branches
+
+branches:
+  only:
+  - master
+
+# job environment
+
+sudo: false
+
+language: python
+
+python:
+  - "3.5"
+  - "3.6"
+
+# job phases
+
+install:
+  - pip install --editable .[test]
+
+script:
+  - pytest --cov --cov-report=term-missing
+
+after_success:
+  - coveralls
