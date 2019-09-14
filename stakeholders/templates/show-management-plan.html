@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}
+<title>management plan</title>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>flag</th>
+          <th>approach</th>
+          <th>stakeholder</th>
+          <th>deliverable</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for approach in data %}
+          {% for stakeholder in data[approach] %}
+            {% for deliverable in data[approach][stakeholder] %}
+              {% if deliverable != "name" %}
+              <tr>
+                <td>
+                  <span approach="{{ approach }}" class="badge badge-pill">!</span>
+                </td>
+                <td>
+                  {{ approach }}
+
+                </td>
+                <td>
+                  <a href="/stakeholders?id={{ stakeholder }}">
+                    {{ data[approach][stakeholder].name }}
+                  </a>
+                </td>
+                <td>
+                  <a href="/deliverables?id={{ deliverable }}">
+                    {{ data[approach][stakeholder][deliverable].name }}
+                  </a>
+                </td>
+              </tr>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div> <!-- div.col-md-12 -->
+</div> <!-- div.row -->
+{% endblock %}

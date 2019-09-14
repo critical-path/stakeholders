@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}
+<title>update association</title>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+  <!-- There will only be one association, because `app.py` queries by `id`,
+       which is a unique value. -->
+  {% for datum in data["associations"] %}
+  <div class="col-md-4">
+
+    <div class="card w-100">
+      <div class="card-body">
+        <h4 class="card-title">association</h4>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ datum.id }}</li>
+
+          <li class="list-group-item">
+            <a href="/stakeholders?id={{ datum.stakeholder_id }}">{{ datum.stakeholder_name }}</a>
+            <span approach="{{ datum.stakeholder_approach }}" class="badge badge-pill">!</span>
+          </li>
+
+          <li class="list-group-item">
+            <a href="/deliverables?id={{ datum.deliverable_id }}">{{ datum.deliverable_name }}</a>
+          </li>
+        </ul>
+      </div> <!-- div.card-body -->
+    </div> <!-- div.card -->
+
+  </div> <!-- div.col-md-4 -->
+</div> <!-- div.row -->
+
+<form action="/associations/update" id="update-association" method="post">
+  <div class="form-row">
+    <div class="col-md-4">
+
+      <div class="form-group">
+        <input class="form-control" name="id" type="text" value="{{ datum.id }}" readonly required hidden></input>
+      </div> <!-- div.form-group -->
+  {% endfor %}
+
+      <div class="form-group">
+        <label for="stakeholder">stakeholder</label>
+        <select class="form-control" id="stakeholder-id" name="stakeholder_id" required>
+          {% for datum in data["stakeholders"] %}
+            <option value="{{ datum.id }}">{{ datum.name }}</option>
+          {% endfor %}
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="deliverable">deliverable</label>
+        <select class="form-control" id="deliverable_id" name="deliverable_id" required>
+          {% for datum in data["deliverables"] %}
+            <option value="{{ datum.id }}">{{ datum.name }}</option>
+          {% endfor %}
+        </select>
+      </div> <!-- div.form-group -->
+
+      <button class="btn btn-outline-warning" type="submit">
+        <img src="/static/svg/pencil.svg">
+        update
+      </button>
+
+    </div> <!-- div.col-md-4 -->
+  </div> <!-- div.form-row -->
+</form>
+{% endblock %}

@@ -1,0 +1,46 @@
+nav {
+  margin-bottom: 2.5%;
+}
+
+div.card {
+  margin-bottom: 2.5%;
+}
+
+button {
+  float: left;
+  margin-right: 2.5%;
+}
+
+.introduction {
+  text-align: center;
+}
+
+span[approach="monitor closely"] { 
+  background-color: red;
+  color: white;
+  margin-left: 2.5%;
+}
+
+span[approach="keep satisfied"] { 
+  background-color: orange;
+  color: white;
+  margin-left: 2.5%;
+}
+
+span[approach="keep informed"] { 
+  background-color: green;
+  color: white;
+  margin-left: 2.5%;
+}
+
+span[approach="monitor"] { 
+  background-color: blue;
+  color: white;
+  margin-left: 2.5%;
+}
+
+span[approach="unknown"] { 
+  background-color: gray;
+  color: white;
+  margin-left: 2.5%;
+}

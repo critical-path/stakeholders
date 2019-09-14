@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}
+<title>update deliverable</title>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+  <!-- There will only be one deliverable, because `app.py` queries by `id`,
+       which is a unique value. -->
+  {% for datum in data %}
+  <div class="col-md-4">
+
+    <div class="card w-100">
+      <div class="card-body">
+        <h4 class="card-title">{{ datum.name }}</h4>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ datum.id }}</li>
+          <li class="list-group-item">{{ datum.kind }}</li>
+          <li class="list-group-item">{{ datum.medium }}</li>
+          <li class="list-group-item">{{ datum.formality }}</li>
+          <li class="list-group-item">{{ datum.frequency }}</li>
+        </ul>
+      </div> <!-- div.card-body -->
+    </div> <!-- div.card -->
+
+  </div> <!-- div.col-md-4 -->
+</div> <!-- div.row -->
+
+<form action="/deliverables/update" id="update-deliverable" method="post">
+  <div class="form-row">
+    <div class="col-md-4">
+
+      <div class="form-group">
+        <input class="form-control" name="id" type="text" value="{{ datum.id }}" readonly required hidden></input>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="name">name</label>
+        <input class="form-control" id="name" name="name" type="text" required></input>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="kind">kind</label>
+        <select class="form-control" id="kind" name="kind" required>
+          <option>push</option>
+          <option>pull</option>
+          <option>interactive</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="medium">medium</label>
+        <select class="form-control" id="medium" name="medium" required>
+          <option>in-person meeting</option>
+          <option>video/teleconference</option>
+          <option>online collaboration tool</option>
+          <option>social media platform</option>
+          <option>e-mail</option>
+          <option>written product</option>
+          <option>other</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="formality">formality</label>
+        <select class="form-control" id="formality" name="formality" required>
+          <option>formal</option>
+          <option>casual</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="frequency">frequency</label>
+        <select class="form-control" id="frequency" name="frequency" required>
+          <option>daily</option>
+          <option>weekly</option>
+          <option>monthly</option>
+          <option>quarterly</option>
+          <option>annually</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <button class="btn btn-outline-warning" type="submit">
+        <img src="/static/svg/pencil.svg">
+        update
+      </button>
+
+    </div> <!-- div.col-md-4 -->
+  </div> <!-- div.form-row -->
+  {% endfor %}
+</form>
+{% endblock %}

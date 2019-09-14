@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}
+<title>associations</title>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+  {% for datum in data %}
+  <div class="col-md-4">
+
+    <div class="card w-100">
+      <div class="card-body">
+        <h4 class="card-title">association</h4>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ datum.id }}</a></li>
+
+          <li class="list-group-item">
+            <a href="/stakeholders?id={{ datum.stakeholder_id }}">{{ datum.stakeholder_name }}</a>
+            <span approach="{{ datum.stakeholder_approach }}" class="badge badge-pill">!</span>
+          </li>
+
+          <li class="list-group-item">
+            <a href="/deliverables?id={{ datum.deliverable_id }}">{{ datum.deliverable_name }}</a>
+          </li>
+        </ul>
+
+        <form action="/associations/update" id="update-association-{{ datum.id }}" method="get">
+          <div class="form">
+            <div class="form-group">
+              <input class="form-control" name="id" type="text" value="{{ datum.id }}" readonly required hidden></input>
+            </div> <!-- div.form-group -->
+
+            <button class="btn btn-outline-warning" type="submit">
+              <img src="/static/svg/pencil.svg">
+              update
+            </button>
+          </div> <!-- div.form -->
+        </form>
+
+        <form action="/associations/delete" id="delete-association-{{ datum.id }}" method="post">
+          <div class="form">
+            <div class="form-group">
+              <input class="form-control" name="id" type="text" value="{{ datum.id }}" readonly required hidden></input>
+            </div> <!-- div.form-group -->
+
+            <button class="btn btn-outline-danger" type="submit">
+              <img src="/static/svg/trash.svg">
+              delete
+            </button>
+          </div> <!-- div.form -->
+        </form>
+      </div> <!-- div.card-body -->
+    </div> <!-- div.card -->
+
+  </div> <!-- div.col-md-4 -->
+  {% endfor %}
+</div> <!-- div.row -->
+{% endblock %}

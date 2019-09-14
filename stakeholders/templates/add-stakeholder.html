@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}
+<title>add stakeholder</title>
+{% endblock %}
+
+{% block body %}
+<form action="/stakeholders/add" id="add-stakeholder" method="post">
+  <div class="form-row">
+    <div class="col-md-4">
+
+      <div class="form-group">
+        <label for="name">name</label>
+        <input class="form-control" id="name" name="name" type="text" required></input>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="role">role</label>
+        <input class="form-control" id="role" name="role" type="text" required></input>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="sentiment">sentiment</label>
+        <select class="form-control" id="sentiment" name="sentiment" required>
+          <option>😀</option>
+          <option>😐</option>
+          <option>😠</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="power">power</label>
+        <select class="form-control" id="power" name="power" required>
+          <option>high</option>
+          <option>low</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="interest">interest</label>
+        <select class="form-control" id="interest" name="interest" required>
+          <option>high</option>
+          <option>low</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <button class="btn btn-outline-primary" type="submit">
+        <img src="/static/svg/check.svg">
+        add
+      </button>
+
+    </div> <!-- div.col-md-4 -->
+  </div> <!-- div.form-row -->
+</form>
+{% endblock %}

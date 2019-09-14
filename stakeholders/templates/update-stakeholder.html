@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}
+<title>update stakeholder</title>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+  <!-- There will only be one stakeholder, because `app.py` queries by `id`,
+       which is a unique value. -->
+  {% for datum in data %}
+  <div class="col-md-4">
+
+    <div class="card w-100">
+      <div class="card-body">
+        <h4 class="card-title">{{ datum.name }}</h4>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ datum.id }}</li>
+          <li class="list-group-item">{{ datum.role }}</li>
+          <li class="list-group-item">{{ datum.sentiment }}</li>
+          <li class="list-group-item">{{ datum.power }} power</li>
+          <li class="list-group-item">{{ datum.interest }} interest</li>
+          <li class="list-group-item">
+            {{ datum.approach }}
+            <span approach="{{ datum.approach }}" class="badge badge-pill">!</span>
+          </li>
+        </ul>
+      </div> <!-- div.card-body -->
+    </div> <!-- div.card -->
+
+  </div> <!-- div.col-md-4 -->
+</div> <!-- div.row -->
+
+<form action="/stakeholders/update" id="update-stakeholder" method="post">
+  <div class="form-row">
+    <div class="col-md-4">
+
+      <div class="form-group">
+        <input class="form-control" name="id" type="text" value="{{ datum.id }}" readonly required hidden></input>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="name">name</label>
+        <input class="form-control" id="name" name="name" type="text" required></input>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="role">role</label>
+        <input class="form-control" id="role" name="role" type="text" required></input>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="sentiment">sentiment</label>
+        <select class="form-control" id="sentiment" name="sentiment" required>
+          <option>😀</option>
+          <option>😐</option>
+          <option>😠</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="power">power</label>
+        <select class="form-control" id="power" name="power" required>
+          <option>high</option>
+          <option>low</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="interest">interest</label>
+        <select class="form-control" id="interest" name="interest" required>
+          <option>high</option>
+          <option>low</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <button class="btn btn-outline-warning" type="submit">
+        <img src="/static/svg/pencil.svg">
+        update
+      </button>
+
+    </div> <!-- div.col-md-4 -->
+  </div> <!-- div.form-row -->
+  {% endfor %}
+</form>
+{% endblock %}

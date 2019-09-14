@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}
+<title>add deliverable</title>
+{% endblock %}
+
+{% block body %}
+<form action="/deliverables/add" id="add-deliverable" method="post">
+  <div class="form-row">
+    <div class="col-md-4">
+
+      <div class="form-group">
+        <label for="name">name</label>
+        <input class="form-control" id="name" name="name" type="text" required></input>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="kind">kind</label>
+        <select class="form-control" id="kind" name="kind" required>
+          <option>push</option>
+          <option>pull</option>
+          <option>interactive</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="medium">medium</label>
+        <select class="form-control" id="medium" name="medium" required>
+          <option>in-person meeting</option>
+          <option>video/teleconference</option>
+          <option>online collaboration tool</option>
+          <option>social media platform</option>
+          <option>e-mail</option>
+          <option>written product</option>
+          <option>other</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="formality">formality</label>
+        <select class="form-control" id="formality" name="formality" required>
+          <option>formal</option>
+          <option>casual</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <div class="form-group">
+        <label for="frequency">frequency</label>
+        <select class="form-control" id="frequency" name="frequency" required>
+          <option>daily</option>
+          <option>weekly</option>
+          <option>monthly</option>
+          <option>quarterly</option>
+          <option>annually</option>
+        </select>
+      </div> <!-- div.form-group -->
+
+      <button class="btn btn-outline-primary" type="submit">
+        <img src="/static/svg/check.svg">
+        add
+     </button>
+
+    </div> <!-- div.col-md-4 -->
+  </div> <!-- div.form-row -->
+</form>
+{% endblock %}
