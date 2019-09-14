@@ -1,0 +1,8 @@
+version: "3"
+services:
+  stakeholders:
+    build: .
+    container_name: api-and-app
+    ports:
+    - "8080:8080"
+    restart: always
