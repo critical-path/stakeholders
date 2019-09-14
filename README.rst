@@ -1,3 +1,13 @@
+.. image:: https://travis-ci.com/critical-path/stakeholders.svg?branch=master
+   :target: https://travis-ci.com/critical-path/stakeholders
+
+.. image:: https://coveralls.io/repos/github/critical-path/stakeholders/badge.svg?branch=master
+   :target: https://coveralls.io/github/critical-path/stakeholders?branch=master
+
+.. image:: https://readthedocs.org/projects/stakeholders/badge/?version=latest
+   :target: https://stakeholders.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
 Introduction
 ============
 
