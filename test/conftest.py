@@ -79,6 +79,63 @@ def db(file):
         yield db
 
 
+# This represents the result of calling 
+# `db.select_all_from_associations_table()`.
+
+@pytest.fixture
+def records():
+    return [
+        {
+            "id": 1,
+            "stakeholder_id": 1,
+            "stakeholder_name": "stakeholder #1",
+            "stakeholder_approach": "monitor closely",
+            "deliverable_id": 1,
+            "deliverable_name": "deliverable #1"
+        },
+        {
+            "id": 3,
+            "stakeholder_id": 1,
+            "stakeholder_name": "stakeholder #1",
+            "stakeholder_approach": "monitor closely",
+            "deliverable_id": 2,
+            "deliverable_name": "deliverable #2"
+        },
+        {
+            "id": 2,
+            "stakeholder_id": 2,
+            "stakeholder_name": "stakeholder #2",
+            "stakeholder_approach": "keep satisfied",
+            "deliverable_id": 2,
+            "deliverable_name": "deliverable #2"
+        },
+        {
+            "id": 4,
+            "stakeholder_id": 3,
+            "stakeholder_name": "stakeholder #3",
+            "stakeholder_approach": "keep informed",
+            "deliverable_id": 1,
+            "deliverable_name": "deliverable #1"
+        },
+        {
+            "id": 5,
+            "stakeholder_id": 4,
+            "stakeholder_name": "stakeholder #4",
+            "stakeholder_approach": "monitor",
+            "deliverable_id": 1,
+            "deliverable_name": "deliverable #1"
+        },
+        {
+            "id": 6,
+            "stakeholder_id": 5,
+            "stakeholder_name": "stakeholder #5",
+            "stakeholder_approach": "unknown",
+            "deliverable_id": 1,
+            "deliverable_name": "deliverable #1"
+        }
+    ]
+
+
 # This represents an instance of the API.
 
 @pytest.fixture
