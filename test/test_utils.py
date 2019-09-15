@@ -122,6 +122,10 @@ def test_map_reduce(records):
     }
 
 
+def test_map_reduce_empty_list():
+    assert stakeholders.utils.map_reduce([]) == {}
+
+
 @pytest.mark.parametrize(
     ("unordered", "ordered"),
     [
