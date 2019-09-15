@@ -18,6 +18,8 @@ DELETE_ASSOCIATION = "/api/v1/associations/delete"
 SHOW_ASSOCIATIONS = "/api/v1/associations/show"
 UPDATE_ASSOCIATION = "/api/v1/associations/update"
 
+SHOW_MANAGEMENT_PLAN = "/api/v1/management-plan/show"
+
 
 # We test all of the stakeholder-related endpoints.
 #
@@ -591,3 +593,192 @@ def test_associations_endpoints(api_client):
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
     assert len(data) == 0
+
+
+# We test the management-plan-related endpoint.
+#
+# In an ideal world, we would split this single function into multiples ones.
+#
+# This would require us either to save state between tests or to create
+# a large number of text fixtures, neither of which we want to do.
+
+def test_management_plan_endpoint(api_client):
+    # We send a request to the API to add a stakeholder.
+    # This is part of test setup.
+
+    form_data = {
+        "name": "stakeholder #1",
+        "role": "project sponsor",
+        "sentiment": "😀",
+        "power": "high",
+        "interest": "high"
+    }
+
+    response = api_client.post(ADD_STAKEHOLDER, data=form_data)
+    data = response.data.decode()
+
+    assert response.status_code == 200
+    assert data == "Success"
+
+
+    # We send a request to the API to add a second stakeholder.
+    # This is part of test setup.
+
+    form_data = {
+        "name": "stakeholder #2",
+        "role": "customer",
+        "sentiment": "😐",
+        "power": "high",
+        "interest": "low"
+    }
+
+    response = api_client.post(ADD_STAKEHOLDER, data=form_data)
+    data = response.data.decode()
+
+    assert response.status_code == 200
+    assert data == "Success"
+
+
+    # We send a request to the API to add a deliverable.
+    # This is part of test setup.
+
+    form_data = {
+        "name": "deliverable #1",
+        "kind": "interactive",
+        "medium": "in-person meeting",
+        "formality": "formal",
+        "frequency": "daily"
+    }
+
+    response = api_client.post(ADD_DELIVERABLE, data=form_data)
+    data = response.data.decode()
+
+    assert response.status_code == 200
+    assert data == "Success"
+
+
+    # We send a request to the API to add a second deliverable.
+    # This is part of test setup.
+
+    form_data = {
+        "name": "deliverable #2",
+        "kind": "push",
+        "medium": "video/teleconference",
+        "formality": "casual",
+        "frequency": "weekly"
+    }
+
+    response = api_client.post(ADD_DELIVERABLE, data=form_data)
+    data = response.data.decode()
+
+    assert response.status_code == 200
+    assert data == "Success"
+
+
+    # We send a request to the API to add an association.
+    # This is part of test setup.
+
+    form_data = {
+        "stakeholder_id": "1",
+        "deliverable_id": "1"
+    }
+
+    response = api_client.post(ADD_ASSOCIATION, data=form_data)
+    data = response.data.decode()
+
+    assert response.status_code == 200
+    assert data == "Success"
+
+
+    # We send a request to the API to add a second association.
+    # This is part of test setup.
+
+    form_data = {
+        "stakeholder_id": "2",
+        "deliverable_id": "2"
+    }
+
+    response = api_client.post(ADD_ASSOCIATION, data=form_data)
+    data = response.data.decode()
+
+    assert response.status_code == 200
+    assert data == "Success"
+
+
+    # We send a request to the API to show the management plan.
+    # We expect the response to contain a mapped, reduced, and sorted
+    # set of associations between stakeholders and deliverables.
+
+    response = api_client.get(SHOW_MANAGEMENT_PLAN)
+    data = json.loads(response.data.decode())
+
+    assert response.status_code == 200
+    assert response.headers["Content-Type"] == "application/json"
+    assert len(data) == 5
+
+    assert data == {
+        "monitor closely": {
+            "1": {
+                "name": "stakeholder #1",
+                "1": {
+                    "name": "deliverable #1",
+                }
+            },
+        },
+        "keep satisfied": {
+            "2": {
+                "name": "stakeholder #2",
+                "2": {
+                   "name": "deliverable #2"
+               }
+            }
+        },
+        "keep informed": {},
+        "monitor": {},
+        "unknown": {}
+    }
+
+
+    # We send a request to the API to delete the first association.
+
+    form_data = {
+        "id": "1"
+    }
+
+    response = api_client.post(DELETE_ASSOCIATION, data=form_data)
+    data = response.data.decode()
+
+    assert response.status_code == 200
+    assert data == "Success"
+
+
+    # We send a request to the API to delete the second association.
+
+    form_data = {
+        "id": "2"
+    }
+
+    response = api_client.post(DELETE_ASSOCIATION, data=form_data)
+    data = response.data.decode()
+
+    assert response.status_code == 200
+    assert data == "Success"
+
+
+    # We send a request to the API to show the management plan.
+    # We expect the response to contain a dict with five keys but no values.
+
+    response = api_client.get(SHOW_MANAGEMENT_PLAN)
+    data = json.loads(response.data.decode())
+
+    assert response.status_code == 200
+    assert response.headers["Content-Type"] == "application/json"
+    assert len(data) == 5
+
+    assert data == {
+        "monitor closely": {},
+        "keep satisfied": {},
+        "keep informed": {},
+        "monitor": {},
+        "unknown": {}
+    }

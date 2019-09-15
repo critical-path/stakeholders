@@ -61,7 +61,7 @@ def create_app(requester=requests, host="localhost", port="8079"):
     SHOW_ASSOCIATIONS = "{}/api/v1/associations/show".format(API)
     UPDATE_ASSOCIATION = "{}/api/v1/associations/update".format(API)
 
-    SHOW_MANAGEMENT_PLAN = "{}/api/v1/management-plan".format(API)
+    SHOW_MANAGEMENT_PLAN = "{}/api/v1/management-plan/show".format(API)
 
 
     app = flask.Flask(__name__)

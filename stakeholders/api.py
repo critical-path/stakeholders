@@ -452,7 +452,7 @@ def create_api(file="./stakeholders.sqlite3"):
             )
 
 
-    @api.route("/api/v1/management-plan")
+    @api.route("/api/v1/management-plan/show")
     def show_management_plan():
         # We open a connection to the database and create the
         # `stakeholders`, `deliverables`, and `associations` tables 
