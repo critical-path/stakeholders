@@ -9,6 +9,12 @@ import stakeholders.db
 import stakeholders.utils
 
 
+# In the API functions below, we call `to_dict` on `flask.request.form`.
+# This is because `flask.request.form` is an ImmutableMultiDict, and
+# we experience issues in Python 3.5 if we do not convert it into a
+# standard dict before passing it into the database functions.
+
+
 def create_api(file="./stakeholders.sqlite3"):
     """
     This is the API factory.  It returns an instance of the API.
