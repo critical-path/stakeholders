@@ -1,3 +1,4 @@
+import collections
 import json
 import pytest
 import stakeholders.api
@@ -710,13 +711,13 @@ def test_management_plan_endpoint(api_client):
     # set of associations between stakeholders and deliverables.
 
     response = api_client.get(SHOW_MANAGEMENT_PLAN)
-    data = json.loads(response.data.decode())
+    data = json.loads(response.data.decode(), object_pairs_hook=collections.OrderedDict)
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
     assert len(data) == 5
 
-    assert data == {
+    assert data == collections.OrderedDict({
         "monitor closely": {
             "1": {
                 "name": "stakeholder #1",
@@ -736,7 +737,7 @@ def test_management_plan_endpoint(api_client):
         "keep informed": {},
         "monitor": {},
         "unknown": {}
-    }
+    })
 
 
     # We send a request to the API to delete the first association.
@@ -769,16 +770,16 @@ def test_management_plan_endpoint(api_client):
     # We expect the response to contain a dict with five keys but no values.
 
     response = api_client.get(SHOW_MANAGEMENT_PLAN)
-    data = json.loads(response.data.decode())
+    data = json.loads(response.data.decode(), object_pairs_hook=collections.OrderedDict)
 
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "application/json"
     assert len(data) == 5
 
-    assert data == {
+    assert data == collections.OrderedDict({
         "monitor closely": {},
         "keep satisfied": {},
         "keep informed": {},
         "monitor": {},
         "unknown": {}
-    }
+    })
