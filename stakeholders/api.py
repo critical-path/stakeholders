@@ -184,7 +184,7 @@ def create_api(file="./stakeholders.sqlite3"):
 
         with stakeholders.db.Database(file=file) as db:
             db.create_stakeholders_table()
-            db.delete_from_stakeholders_table(**flask.request.form)
+            db.delete_from_stakeholders_table(**flask.request.form.to_dict())
 
             # We return a `200` status code and a `Success` message.
 
@@ -211,7 +211,7 @@ def create_api(file="./stakeholders.sqlite3"):
 
         with stakeholders.db.Database(file=file) as db:
             db.create_deliverables_table()
-            db.insert_into_deliverables_table(**flask.request.form)
+            db.insert_into_deliverables_table(**flask.request.form.to_dict())
 
             # We return a `200` status code and a `Success` message.
 
@@ -280,7 +280,7 @@ def create_api(file="./stakeholders.sqlite3"):
 
         with stakeholders.db.Database(file=file) as db:
             db.create_deliverables_table()
-            db.update_deliverables_table(**flask.request.form)
+            db.update_deliverables_table(**flask.request.form.to_dict())
 
             # We return a `200` status code and a `Success` message.
 
@@ -307,7 +307,7 @@ def create_api(file="./stakeholders.sqlite3"):
 
         with stakeholders.db.Database(file=file) as db:
             db.create_deliverables_table()
-            db.delete_from_deliverables_table(**flask.request.form)
+            db.delete_from_deliverables_table(**flask.request.form.to_dict())
 
             # We return a `200` status code and a `Success` message.
 
@@ -337,7 +337,7 @@ def create_api(file="./stakeholders.sqlite3"):
             db.create_stakeholders_table()
             db.create_deliverables_table()
             db.create_associations_table()
-            db.insert_into_associations_table(**flask.request.form)
+            db.insert_into_associations_table(**flask.request.form.to_dict())
 
             # We return a `200` status code and a `Success` message.
 
@@ -412,7 +412,7 @@ def create_api(file="./stakeholders.sqlite3"):
             db.create_stakeholders_table()
             db.create_deliverables_table()
             db.create_associations_table()
-            db.update_associations_table(**flask.request.form)
+            db.update_associations_table(**flask.request.form.to_dict())
 
             # We return a `200` status code and a `Success` message.
 
@@ -442,7 +442,7 @@ def create_api(file="./stakeholders.sqlite3"):
             db.create_stakeholders_table()
             db.create_deliverables_table()
             db.create_associations_table()
-            db.delete_from_associations_table(**flask.request.form)
+            db.delete_from_associations_table(**flask.request.form.to_dict())
 
             # We return a `200` status code and a `Success` message.
 

@@ -5,4 +5,4 @@ Manage stakeholders like a pro!
 
 __author__ = "critical-path"
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
