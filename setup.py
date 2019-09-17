@@ -8,7 +8,7 @@ setuptools.setup(
     url="https://github.com/critical-path/stakeholders",
     description="Manage stakeholders like a pro!",
     license="MIT",
-    keywords="pmbok project-management stakeholder-management stakeholders",
+    keywords="python pmbok project-management stakeholder-management stakeholders",
     packages=setuptools.find_packages(),
     package_data={
         "stakeholders": [
