@@ -33,7 +33,7 @@ To install stakeholders with test-related dependencies, run the following comman
    [user@host ~]$ cd stakeholders
    [user@host stakeholders]$ sudo pip install --editable .[test]
 
-To install it without test-related dependencies, run the following command from your shell.
+To install it without test-related dependencies, run the following commands from your shell.
 
 .. code-block:: console
 
