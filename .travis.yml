@@ -20,7 +20,7 @@ install:
   - pip install --editable .[test]
 
 script:
-  - pytest --cov --cov-report=term-missing
+  - pytest -m "not browser" --cov --cov-report=term-missing
 
 after_success:
   - coveralls
