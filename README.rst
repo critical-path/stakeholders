@@ -90,6 +90,5 @@ To execute tests that require a web browser, run the following commands from you
 
 .. code-block:: console
 
-   [user@host stakeholders]$ chmod +x ./test-api-and-app.sh
-   [user@host stakeholders]$ ./test-api-and-app.sh
-   [user@host stakeholders]$ pytest -m "browser"
+   [user@host stakeholders]$ chmod +x ./run-browser-tests.sh
+   [user@host stakeholders]$ ./run-browser-tests.sh

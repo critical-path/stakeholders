@@ -1,31 +1,34 @@
 #!/bin/bash
 
-# Install geckodriver.
+# Download geckodriver.
+wget --quiet https://github.com/mozilla/geckodriver/releases/download/v0.25.0/geckodriver-v0.25.0-linux64.tar.gz
 
-export PATH=$PATH:$TRAVIS_BUILD_DIR
-
-wget --no-verbose https://github.com/mozilla/geckodriver/releases/download/v0.25.0/geckodriver-v0.25.0-linux64.tar.gz
-
+# Extract geckodriver.
 tar -xvf geckodriver-v0.25.0-linux64.tar.gz
 
+# Add geckodriver to PATH environment variable.
+export PATH=$PATH:$TRAVIS_BUILD_DIR
 
 # Start xvfb.
+xvfb-run make test
 
-xvfb-run --server-args="-screen 0 1024x768x24" make test
+# Import common functions.
+source common-functions.sh
 
+# Check database file.
+check-database-file
 
-# Start gunicorn in the background.
+# Check log file.
+check-log-file
 
-gunicorn --bind=0.0.0.0:8079 --workers=2 "stakeholders.api:create_api(file='test-database.sqlite3')" &
+# Start gunicorn.
+start-gunicorn
 
-gunicorn --bind=0.0.0.0:8080 --workers=2 "stakeholders.app:create_app()" &
-
-
-# Run tests.
-
-pytest -v -m "browser"
-
+# Run browser tests.
+run-tests
 
 # Stop gunicorn.
+stop-gunicorn
 
-pkill gunicorn
+# Check database file again.
+check-database-file
