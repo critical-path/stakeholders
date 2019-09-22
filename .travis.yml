@@ -32,4 +32,4 @@ script:
 
 after_success:
   - coveralls
-  - chmod +x run-browser-tests-in-travis.sh ; run-browser-tests-in-travis.sh
+  - chmod +x ./run-browser-tests-in-travis.sh ; ./run-browser-tests-in-travis.sh
