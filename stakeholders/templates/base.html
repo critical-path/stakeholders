@@ -20,14 +20,16 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="full-navbar">
+        <!-- Each `li` has an `id` attribute, the purpose of
+             which is to facilitate testing with Selenium. -->
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item active" id="home">
             <a class="nav-link" href="/">
               <img src="/static/svg/home.svg"> home
             </a>
           </li>
 
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" id="stakeholders">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
               <img src="/static/svg/person.svg"> stakeholders
             </a>
@@ -37,7 +39,7 @@
             </div> <!-- div.dropdown-menu -->
           </li>
 
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" id="deliverables">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
               <img src="/static/svg/document.svg"> deliverables
             </a>
@@ -47,7 +49,7 @@
             </div> <!-- div.dropdown-menu -->
           </li>
 
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" id="associations">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
               <img src="/static/svg/link-intact.svg"> associations
             </a>
@@ -57,7 +59,7 @@
             </div> <!-- div.dropdown-menu -->
           </li>
 
-          <li class="nav-item active">
+          <li class="nav-item active" id="management-plan">
             <a class="nav-link" href="/management-plan">
               <img src="/static/svg/project.svg"> management plan
             </a>

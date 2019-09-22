@@ -5,10 +5,12 @@
 
 {% block body %}
 <div class="row">
+  <!-- Each `div.card` has an `id` attribute, the purpose of
+       which is to facilitate testing with Selenium. -->
   {% for datum in data %}
   <div class="col-md-4">
 
-    <div class="card w-100">
+    <div class="card w-100" id="{{ datum.id }}">
       <div class="card-body">
         <h4 class="card-title">{{ datum.name }}</h4>
 

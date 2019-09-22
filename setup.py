@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="stakeholders",
-    version="0.1.2",
+    version="0.1.3",
     author="critical-path",
     url="https://github.com/critical-path/stakeholders",
     description="Manage stakeholders like a pro!",

@@ -12,6 +12,14 @@ import stakeholders.app
 import stakeholders.db
 
 
+# This registers a custom marker, `pytest.mark.browser`.
+
+def pytest_configure(config):
+    config.addinivalue_line(
+        "markers", 
+        "browser: Run browser tests with Selenium, Firefox, and geckodriver."
+    )
+
 
 # This represents the path to a database file.
 
@@ -180,7 +188,7 @@ def app_client(app):
 @pytest.fixture
 def browser():
     options = selenium.webdriver.firefox.options.Options()
-#    options.add_argument("--headless")
+    options.add_argument("--headless")
 
     browser = selenium.webdriver.Firefox(options=options)
     browser.implicitly_wait(1)
