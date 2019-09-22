@@ -1,9 +1,7 @@
 #!/bin/bash
 
-
 DATABASE_FILE="test-database.sqlite3"
 LOG_FILE="geckodriver.log"
-
 
 function check-database-file {
   test -e ${DATABASE_FILE}
@@ -12,7 +10,6 @@ function check-database-file {
     rm ${DATABASE_FILE}
   fi
 }
-
 
 function check-log-file {
   test -e ${LOG_FILE}
@@ -24,7 +21,6 @@ function check-log-file {
   fi
 }
 
-
 function start-gunicorn {
   gunicorn --bind=0.0.0.0:8079\
            --workers=2\
@@ -35,11 +31,9 @@ function start-gunicorn {
            "stakeholders.app:create_app()" &
 }
 
-
 function stop-gunicorn {
   pkill gunicorn
 }
-
 
 function run-tests {
   pytest -v -m "browser"
