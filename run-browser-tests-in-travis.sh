@@ -4,7 +4,7 @@
 
 export PATH=$PATH:$TRAVIS_BUILD_DIR
 
-wget https://github.com/mozilla/geckodriver/releases/download/v0.25.0/geckodriver-v0.25.0-linux64.tar.gz
+wget --no-verbose https://github.com/mozilla/geckodriver/releases/download/v0.25.0/geckodriver-v0.25.0-linux64.tar.gz
 
 tar -xvf geckodriver-v0.25.0-linux64.tar.gz
 
