@@ -6,14 +6,6 @@ branches:
 
 # job environment
 
-dist: xenial
-
-services:
-  - xvfb
-
-addons:
-  firefox: latest
-
 sudo: false
 
 language: python
@@ -32,9 +24,3 @@ script:
 
 after_success:
   - coveralls
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.25.0/geckodriver-v0.25.0-linux64.tar.gz
-  - tar -xvf geckodriver-v0.25.0-linux64.tar.gz
-  - export PATH=$PATH:.
-  - xvfb-run --server-args="-screen 0 1024x768x24" make test
-  - pytest -m "browser"
-  - pkill gunicorn
