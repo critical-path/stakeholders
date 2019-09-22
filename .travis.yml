@@ -6,6 +6,14 @@ branches:
 
 # job environment
 
+dist: xenial
+
+services:
+  - xvfb
+
+addons:
+  firefox: latest
+
 sudo: false
 
 language: python
@@ -24,3 +32,4 @@ script:
 
 after_success:
   - coveralls
+  - xvfb-run make test ; pytest -m "browser" ; pkill gunicorn
