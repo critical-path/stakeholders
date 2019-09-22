@@ -32,4 +32,9 @@ script:
 
 after_success:
   - coveralls
-  - xvfb-run make test ; pytest -m "browser" ; pkill gunicorn
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.25.0/geckodriver-v0.25.0-linux64.tar.gz
+  - tar -xvf geckodriver-v0.25.0-linux64.tar.gz
+  - export PATH=$PATH:.
+  - xvfb-run --server-args="-screen 0 1024x768x24" make test
+  - pytest -m "browser"
+  - pkill gunicorn
