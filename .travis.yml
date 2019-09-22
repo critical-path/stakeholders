@@ -32,11 +32,4 @@ script:
 
 after_success:
   - coveralls
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.25.0/geckodriver-v0.25.0-linux64.tar.gz
-  - tar -xvf geckodriver-v0.25.0-linux64.tar.gz
-  - export PATH=$PATH:.
-  - xvfb-run --server-args="-screen 0 1024x768x24" make test
-  - chmod +x ./test-api-and-app.sh
-  - ./test-api-and-app.sh &
-  - pytest -m "browser"
-  - pkill gunicorn
+  - chmod +x run-browser-tests-in-travis.sh ; run-browser-tests-in-travis.sh
