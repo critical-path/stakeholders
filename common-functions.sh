@@ -1,9 +1,8 @@
 #!/bin/bash
 
-DATABASE_FILE="test-database.sqlite3"
-LOG_FILE="geckodriver.log"
-
 function check-database-file {
+  DATABASE_FILE="test-database.sqlite3"
+
   test -e ${DATABASE_FILE}
 
   if [[ $? == 0 ]]; then
@@ -12,6 +11,8 @@ function check-database-file {
 }
 
 function check-log-file {
+  LOG_FILE="geckodriver.log"
+
   test -e ${LOG_FILE}
 
   if [[ $? == 0 ]]; then
