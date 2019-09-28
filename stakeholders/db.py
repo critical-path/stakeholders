@@ -36,6 +36,12 @@ class Database():
     def __exit__(self, exception_type, exception_value, traceback):
         self.close()
 
+    def __repr__(self):
+        return "Database(file='{}')".format(self.file)
+
+    def __str__(self):
+        return self.file
+
     def open(self):
         """
         Opens a connection to the database.
