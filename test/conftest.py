@@ -191,7 +191,7 @@ def browser():
     options.add_argument("--headless")
 
     browser = selenium.webdriver.Firefox(options=options)
-    browser.implicitly_wait(1)
+    browser.implicitly_wait(5)
 
     yield browser
 
