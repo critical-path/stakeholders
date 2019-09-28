@@ -30,18 +30,10 @@ class Database():
         self.cursor = None
 
     def __enter__(self):
-        """
-        Opens a connection to the database via a `with` statement.
-        """
-
         self.open()
         return self
 
     def __exit__(self, exception_type, exception_value, traceback):
-        """
-        Closes the connection to the database after a `with` statement.
-        """
-
         self.close()
 
     def open(self):
