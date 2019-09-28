@@ -3,6 +3,18 @@ import pytest
 import stakeholders.db
 
 
+def test_repr(file):
+    with stakeholders.db.Database(file=file) as db:
+        assert repr(db) == "Database(file='{}')".format(file)
+
+
+def test_str(file, capsys):
+    with stakeholders.db.Database(file=file) as db:
+        print(db)
+        stdout, stderr = capsys.readouterr()
+        assert stdout == "{}".format(file) + "\n"
+
+
 # We try to select all records from the `stakeholders` table 
 # before actually creating it.
 # We expect SQLite to raise an exception.
