@@ -77,7 +77,7 @@ In the navbar, select :code:`management-plan`.
 
 Your associations appear here, sorted first by management approach, then by stakeholders' unique identifiers, and then by deliverables' unique identifiers.
 
-This is your stakeholder management - the whole purpose of this app! 
+This is your stakeholder management plan - the whole purpose of this app! 
 
 Make updates
 ------------
