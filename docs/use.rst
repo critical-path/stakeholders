@@ -82,6 +82,6 @@ This is your stakeholder management plan - the whole purpose of this app!
 Make updates
 ------------
 
-In the navbar, select either :code:`stakeholders`, :code:`deliverables`, or :code:`associations` and then :code:`show/update/delete`.
+In the navbar, select :code:`stakeholders`, :code:`deliverables`, or :code:`associations` and then :code:`show/update/delete`.
 
 Find a stakeholder, deliverable, or association and then click on its :code:`update` or :code:`delete` button.
