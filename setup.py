@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="stakeholders",
-    version="0.1.5",
+    version="0.1.6",
     author="critical-path",
     url="https://github.com/critical-path/stakeholders",
     description="Manage stakeholders like a pro!",
@@ -20,7 +20,7 @@ setuptools.setup(
     },
     install_requires=[
         "flask",
-        "gunicorn",
+        "gunicorn==19.9.0",
         "requests"
     ],
     extras_require={
